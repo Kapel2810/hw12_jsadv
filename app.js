@@ -102,35 +102,68 @@
 /////////////////////////////////
 //------------- ex 4------------
 
-let daysOfWeek = ['יום א','יום ב','יום ג','יום ד','יום ה','יום ו','שבת']
-const generateWorkingDayAfterDelayAsync = () => {
+// let daysOfWeek = ['יום א','יום ב','יום ג','יום ד','יום ה','יום ו','שבת']
+// const generateWorkingDayAfterDelayAsync = () => {
+//     let myPromise = new Promise((resolve, reject) => {
+//         setTimeout(() => {
+
+//             let workingDayIndex = Math.floor(Math.random() *daysOfWeek.length)
+//             let workingDay = daysOfWeek[workingDayIndex]
+//             switch (workingDay) {
+//                 case 'יום א':
+//                     resolve(workingDay)
+//                     break;
+//                 case 'יום ב':
+//                     resolve(workingDay)
+//                     break;
+//                 case 'יום ג':
+//                     resolve(workingDay)
+//                     break;
+//                 case 'יום ד':
+//                     resolve(workingDay)
+//                     break;
+//                 case 'יום ה':
+//                     resolve(workingDay)
+//                     break;
+//                 case ' יום ו':
+//                     reject('יום ו-יום חופש')
+//                     break;
+//                 case 'שבת':
+//                     reject('שבת-יום חופש')
+//                     break;
+//             }
+//         }, 1000);
+//     })
+//     return myPromise
+
+// }
+
+// const runCode = () => {
+//  generateWorkingDayAfterDelayAsync()
+//  .then ((data)=>{
+//      console.log(data)
+//  })
+//  .catch((err)=> {
+//      console.log(err)
+//  })
+// }
+
+///////////////////////////////////
+//--------------- ex 5------------
+//לא מצליחה :/
+let numbers = []
+const addToArray = () => {
+    let number = Math.floor(Math.random()*100)
+    numbers.push(number)
+}
+const getArrayFromServerAsync = (size) => {
     let myPromise = new Promise((resolve, reject) => {
         setTimeout(() => {
-
-            let workingDayIndex = Math.floor(Math.random() *daysOfWeek.length)
-            let workingDay = daysOfWeek[workingDayIndex]
-            switch (workingDay) {
-                case 'יום א':
-                    resolve(workingDay)
-                    break;
-                case 'יום ב':
-                    resolve(workingDay)
-                    break;
-                case 'יום ג':
-                    resolve(workingDay)
-                    break;
-                case 'יום ד':
-                    resolve(workingDay)
-                    break;
-                case 'יום ה':
-                    resolve(workingDay)
-                    break;
-                case ' יום ו':
-                    reject('יום ו-יום חופש')
-                    break;
-                case 'שבת':
-                    reject('שבת-יום חופש')
-                    break;
+            let randomNumber = Math.floor(Math.random() * size)
+            if (randomNumber % 2 === 0) {
+                resolve(addToArray)
+            }else{
+                reject()
             }
         }, 1000);
     })
@@ -139,11 +172,11 @@ const generateWorkingDayAfterDelayAsync = () => {
 }
 
 const runCode = () => {
- generateWorkingDayAfterDelayAsync()
- .then ((data)=>{
-     console.log(data)
- })
- .catch((err)=> {
-     console.log(err)
- })
+    getArrayFromServerAsync(100)
+    .then((number)=>{
+        console.log(number)
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
 }
