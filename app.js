@@ -35,33 +35,65 @@
 //----------- ex2--------------
 
 
-const generatePrimeNumberAfterDelayAsync = (min, max) => {
+// const generatePrimeNumberAfterDelayAsync = (min, max) => {
+//     let myPromise = new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             let randomNumber = Math.floor(Math.random() * (max - min)) + min
+
+//             if (randomNumber < 2) {
+//                 reject()
+
+//                 for (let i = 0; i < randomNumber; i++) {
+//                     if (randomNumber % i === 0) {
+//                         reject()
+//                     }
+//                 }
+//             }else{
+//                 resolve(randomNumber)
+//             }
+//         }, 1000);
+//     })
+//     return myPromise
+// }
+
+// const runCode = () => {
+//     generatePrimeNumberAfterDelayAsync(1, 20)
+//         .then((number) => {
+//             console.log(number)
+//         })
+//         .catch((err) => {
+//             console.log(err)
+//         })
+// }
+
+//////////////////////////////////////
+//--------------ex 3 ---------------
+let cuteAnimals = ['חתלתול', 'כלבלב', 'ארנבון', 'תוכון', 'עקרב', 'עכביש', 'ג׳וק']
+const generteCuteAnimalAfterDelayAsync = () => {
     let myPromise = new Promise((resolve, reject) => {
         setTimeout(() => {
-            let randomNumber = Math.floor(Math.random() * (max - min)) + min
 
-            if (randomNumber < 2) {
-                reject()
+            let randomAnimalIndex = Math.floor(Math.random() * cuteAnimals.length)
+            let randomAnimal = cuteAnimals[randomAnimalIndex]
 
-                for (let i = 0; i < randomNumber; i++) {
-                    if (randomNumber % i === 0) {
-                        reject()
-                    }
-                }
-            }else{
-                resolve(randomNumber)
+            if (randomAnimal === 'עקרב' || randomAnimal === 'עכביש' || randomAnimal === 'ג׳וק') {
+                reject('not a cute animal')
+            } else {
+                resolve(randomAnimal)
             }
         }, 1000);
+
     })
     return myPromise
-}
 
+
+}
 const runCode = () => {
-    generatePrimeNumberAfterDelayAsync(1, 20)
-        .then((number) => {
-            console.log(number)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+    generteCuteAnimalAfterDelayAsync()
+    .then((data)=> {
+        console.log(data)
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
 }
