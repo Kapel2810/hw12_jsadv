@@ -68,32 +68,82 @@
 
 //////////////////////////////////////
 //--------------ex 3 ---------------
-let cuteAnimals = ['חתלתול', 'כלבלב', 'ארנבון', 'תוכון', 'עקרב', 'עכביש', 'ג׳וק']
-const generteCuteAnimalAfterDelayAsync = () => {
+
+// let cuteAnimals = ['חתלתול', 'כלבלב', 'ארנבון', 'תוכון', 'עקרב', 'עכביש', 'ג׳וק']
+// const generteCuteAnimalAfterDelayAsync = () => {
+//     let myPromise = new Promise((resolve, reject) => {
+//         setTimeout(() => {
+
+//             let randomAnimalIndex = Math.floor(Math.random() * cuteAnimals.length)
+//             let randomAnimal = cuteAnimals[randomAnimalIndex]
+
+//             if (randomAnimal === 'עקרב' || randomAnimal === 'עכביש' || randomAnimal === 'ג׳וק') {
+//                 reject('not a cute animal')
+//             } else {
+//                 resolve(randomAnimal)
+//             }
+//         }, 1000);
+
+//     })
+//     return myPromise
+
+
+// }
+// const runCode = () => {
+//     generteCuteAnimalAfterDelayAsync()
+//     .then((data)=> {
+//         console.log(data)
+//     })
+//     .catch((err)=>{
+//         console.log(err)
+//     })
+// }
+
+/////////////////////////////////
+//------------- ex 4------------
+
+let daysOfWeek = ['יום א','יום ב','יום ג','יום ד','יום ה','יום ו','שבת']
+const generateWorkingDayAfterDelayAsync = () => {
     let myPromise = new Promise((resolve, reject) => {
         setTimeout(() => {
 
-            let randomAnimalIndex = Math.floor(Math.random() * cuteAnimals.length)
-            let randomAnimal = cuteAnimals[randomAnimalIndex]
-
-            if (randomAnimal === 'עקרב' || randomAnimal === 'עכביש' || randomAnimal === 'ג׳וק') {
-                reject('not a cute animal')
-            } else {
-                resolve(randomAnimal)
+            let workingDayIndex = Math.floor(Math.random() *daysOfWeek.length)
+            let workingDay = daysOfWeek[workingDayIndex]
+            switch (workingDay) {
+                case 'יום א':
+                    resolve(workingDay)
+                    break;
+                case 'יום ב':
+                    resolve(workingDay)
+                    break;
+                case 'יום ג':
+                    resolve(workingDay)
+                    break;
+                case 'יום ד':
+                    resolve(workingDay)
+                    break;
+                case 'יום ה':
+                    resolve(workingDay)
+                    break;
+                case ' יום ו':
+                    reject('יום ו-יום חופש')
+                    break;
+                case 'שבת':
+                    reject('שבת-יום חופש')
+                    break;
             }
         }, 1000);
-
     })
     return myPromise
 
-
 }
+
 const runCode = () => {
-    generteCuteAnimalAfterDelayAsync()
-    .then((data)=> {
-        console.log(data)
-    })
-    .catch((err)=>{
-        console.log(err)
-    })
+ generateWorkingDayAfterDelayAsync()
+ .then ((data)=>{
+     console.log(data)
+ })
+ .catch((err)=> {
+     console.log(err)
+ })
 }
