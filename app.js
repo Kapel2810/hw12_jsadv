@@ -151,32 +151,73 @@
 ///////////////////////////////////
 //--------------- ex 5------------
 //לא מצליחה :/
-let numbers = []
-const addToArray = () => {
-    let number = Math.floor(Math.random()*100)
-    numbers.push(number)
+// let numbers = []
+// const addToArray = () => {
+//     let number = Math.floor(Math.random()*100)
+//     numbers.push(number)
+// }
+// const getArrayFromServerAsync = (size) => {
+//     let myPromise = new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             let randomNumber = Math.floor(Math.random() * size)
+//             if (randomNumber % 2 === 0) {
+//                 resolve(addToArray)
+//             }else{
+//                 reject()
+//             }
+//         }, 1000);
+//     })
+//     return myPromise
+
+// }
+
+// const runCode = () => {
+//     getArrayFromServerAsync(100)
+//     .then((number)=>{
+//         console.log(number)
+//     })
+//     .catch((err)=>{
+//         console.log(err)
+//     })
+// }
+
+////////////////////////////////
+// ------------- ex6------------
+
+const getRandomNumber = (min, max) => {
+    return Math.floor(Math.random() * (max - min)) + min
 }
-const getArrayFromServerAsync = (size) => {
+
+const getPizzaFromServerAsync = () => {
     let myPromise = new Promise((resolve, reject) => {
         setTimeout(() => {
-            let randomNumber = Math.floor(Math.random() * size)
+            let randomNumber = Math.floor(Math.random() * 100)
+
             if (randomNumber % 2 === 0) {
-                resolve(addToArray)
-            }else{
-                reject()
+                let pizzaDiameter = getRandomNumber(10, 50)
+                let pizzaPrice = getRandomNumber(20, 80)
+                let pizzaAdd = getRandomNumber(0, 4)
+
+                let pizza = {
+                    diameter: pizzaDiameter,
+                    price: pizzaPrice,
+                    add: pizzaAdd
+                }
+                resolve(pizza)
+            } else {
+                reject("cant bing pizza from the server")
             }
         }, 1000);
     })
     return myPromise
-
 }
 
-const runCode = () => {
-    getArrayFromServerAsync(100)
-    .then((number)=>{
-        console.log(number)
+const runCode = ()=> {
+    getPizzaFromServerAsync ()
+    .then((pizza)=>{
+        console.log(pizza)
     })
-    .catch((err)=>{
+    .catch ((err)=>{
         console.log(err)
     })
 }
